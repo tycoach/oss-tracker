@@ -1,0 +1,16 @@
+oss_tracker:
+  target: "{{ env_var('DBT_TARGET', 'dev') }}"
+  outputs:
+    dev:
+      type: duckdb
+      path: /tmp/oss_tracker_dev.duckdb
+      threads: 4
+
+    prod:
+      type: bigquery
+      method: oauth
+      project: minisky-local
+      dataset: dbt_prod
+      threads: 4
+      timeout_seconds: 300
+      location: US

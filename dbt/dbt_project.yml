@@ -1,0 +1,27 @@
+name: oss_tracker
+version: '2.0.0'
+config-version: 2
+
+model-paths: ['models']
+snapshot-paths: ['snapshots']
+test-paths: ['tests']
+macro-paths: ['macros']
+analysis-paths: ['analyses']
+
+models:
+  oss_tracker:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: incremental
+      +schema: marts
+
+snapshots:
+  oss_tracker:
+    +target_schema: snapshots
+    +strategy: timestamp
+
+vars:
+  batch_id: null
+  quarantine_schema: quarantine
