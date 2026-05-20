@@ -113,6 +113,12 @@ python data-generator/fetch_oss.py
 
 ## Operating
 
+### Operator Dashboard
+
+![Operator Dashboard — Overview](img/operator_dashboard.png)
+
+The Streamlit dashboard at **http://localhost:8501** shows engine health, MiniSky status, and a live pipeline summary scoped to your project token. Only your pipelines are visible.
+
 ### Check pipeline status
 
 ```bash
@@ -149,11 +155,25 @@ ude schema show git_repos
 ude schema history npm_packages
 ```
 
+### Schema History
+
+![Schema History — locked schemas, version timeline](img/schema_history.png)
+
+Tracks every schema version, EVOLVED and BROKEN deviation events per pipeline.
+
 ### Review quarantined records
 
 ```bash
 ude quarantine list
 ```
+
+![Quarantine — pending batches awaiting operator decision](img/quarantine.png)
+
+### dbt Lineage
+
+![dbt Lineage — model dependency graph](img/dbt_lineage.png)
+
+The lineage page shows the full dbt DAG for each pipeline — staging models, mart models, and snapshots — updated on every dbt run from `manifest.json`. Scoped to your project token.
 
 ### Monitoring
 
